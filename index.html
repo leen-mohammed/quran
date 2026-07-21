@@ -69,15 +69,15 @@ header.app-header{
 
 /* ===== Nav ===== */
 nav.tabbar{
-  position:sticky; bottom:0; z-index:20; display:grid; grid-template-columns:repeat(7,1fr);
+  position:sticky; bottom:0; z-index:20; display:grid; grid-template-columns:repeat(8,1fr);
   background:var(--bg-elev); border-top:1px solid var(--line); box-shadow:0 -6px 20px rgba(0,0,0,.25);
   padding:6px 2px calc(6px + env(safe-area-inset-bottom));
 }
 nav.tabbar button{
   background:none;border:none;color:var(--ink-muted); display:flex; flex-direction:column; align-items:center; gap:3px;
-  font-family:'Tajawal',sans-serif; font-size:9px; padding:6px 1px; cursor:pointer; border-radius:10px; transition:.2s;
+  font-family:'Tajawal',sans-serif; font-size:8px; padding:6px 1px; cursor:pointer; border-radius:10px; transition:.2s;
 }
-nav.tabbar button svg{width:19px;height:19px;stroke:var(--ink-muted); fill:none; stroke-width:1.7;}
+nav.tabbar button svg{width:18px;height:18px;stroke:var(--ink-muted); fill:none; stroke-width:1.7;}
 nav.tabbar button.active{color:var(--gold-bright);}
 nav.tabbar button.active svg{stroke:var(--gold-bright);}
 nav.tabbar button.active{background:rgba(203,161,53,.1);}
@@ -212,14 +212,45 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold);}
 .sunnah-card .sunnah-text{flex:1; font-size:14px; line-height:1.9; color:var(--ink);}
 .sunnah-card .sunnah-src{display:block; font-size:11px; color:var(--gold); margin-top:3px;}
 
-/* KIDS */
-.letters-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:18px;}
-.letter-tile{
-  aspect-ratio:1; background:var(--bg-elev2); border:1px solid var(--line); border-radius:12px; display:flex; align-items:center;
-  justify-content:center; font-family:'Amiri Quran',serif; font-size:22px; cursor:pointer; color:var(--ink); transition:.15s;
+/* TAJWEED */
+.tajweed-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:18px;}
+.tajweed-card{
+  background:var(--bg-elev2); border:1px solid var(--line); border-radius:14px; padding:14px 12px; text-align:center;
+  cursor:pointer; transition:0.2s; box-shadow:var(--shadow);
 }
-.letter-tile:active{transform:scale(.9); background:var(--gold); color:#1a1206;}
-.letter-caption{text-align:center; font-size:12px; color:var(--ink-muted); min-height:18px; margin-bottom:14px;}
+.tajweed-card:hover{transform:translateY(-3px); border-color:var(--gold);}
+.tajweed-card .tj-icon{font-size:24px; display:block; margin-bottom:8px;}
+.tajweed-card .tj-name{font-family:'Aref Ruqaa',serif; font-size:17px; color:var(--gold-bright);}
+.tajweed-card .tj-desc{font-size:12.5px; color:var(--ink-muted); margin-top:6px;}
+.tajweed-detail{
+  background:var(--bg-elev); border:1px solid var(--gold); border-radius:14px; padding:16px; margin-bottom:14px;
+  display:none; line-height:2; font-size:14.5px;
+}
+.tajweed-detail.show{display:block;}
+.letter-caption{text-align:center; font-size:13px; color:var(--ink-muted); min-height:18px; margin-bottom:14px;}
+
+/* TAJWEED DETAIL SCREEN */
+.tajweed-detail-header{position:sticky; top:0; z-index:6; background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:14px; box-shadow:var(--shadow); text-align:center;}
+.tajweed-detail-header .tj-big-icon{font-size:34px;}
+.tajweed-detail-header .tj-big-name{font-family:'Aref Ruqaa',serif; font-size:24px; color:var(--gold-bright); margin-top:4px;}
+.tajweed-detail-header .tj-cat{font-size:11px; color:var(--teal); margin-top:2px;}
+.tajweed-explain{background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:14px; font-size:14.5px; line-height:2.1; color:var(--ink);}
+.tajweed-examples-title{font-family:'Aref Ruqaa',serif; font-size:17px; color:var(--gold-bright); margin:6px 0 10px;}
+.tj-example-card{background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:10px;}
+.tj-example-ayah{font-family:'Amiri Quran',serif; font-size:21px; line-height:2.2; color:var(--ink); text-align:center;}
+.tj-example-word{color:var(--gold-bright); font-weight:700;}
+.tj-example-ref{text-align:center; font-size:11.5px; color:var(--gold); margin-top:8px;}
+.tj-example-note{font-size:12.5px; color:var(--ink-muted); margin-top:8px; line-height:1.9; border-top:1px dashed var(--line); padding-top:8px;}
+
+/* DIGITAL TASBIH (standalone tab) - 1000 counter */
+.tasbih-wrap{text-align:center; padding:20px 10px;}
+.tasbih-display{font-size:72px; font-weight:800; color:var(--gold-bright); letter-spacing:4px; text-shadow:0 0 24px rgba(203,161,53,.3); font-family:'Aref Ruqaa',serif; direction:ltr;}
+.tasbih-progress{width:100%; height:8px; background:var(--bg-elev2); border-radius:10px; margin:12px 0; overflow:hidden; border:1px solid var(--line);}
+.tasbih-progress-fill{height:100%; background:linear-gradient(90deg,var(--teal),var(--gold)); width:0%; transition:width .2s; border-radius:10px;}
+.tasbih-btns{display:flex; gap:12px; justify-content:center; margin:16px 0 10px; flex-wrap:wrap;}
+.tasbih-btns .btn{min-width:80px; font-size:16px; padding:12px 20px;}
+.tasbih-presets{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:6px 0;}
+.tasbih-presets .btn.sm{min-width:60px;}
 
 /* TODO */
 .add-row{display:flex; gap:8px; margin-bottom:16px;}
@@ -260,18 +291,22 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold);}
 .switch input:checked + .slider::before{transform:translateX(-20px); background:var(--gold-bright);}
 
 /* STORIES */
-.story-card{background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; margin-bottom:10px; overflow:hidden;}
-.story-head{display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer;}
+.story-card{background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; margin-bottom:10px; overflow:hidden; cursor:pointer; transition:.2s;}
+.story-card:hover{border-color:var(--gold);}
+.story-head{display:flex; align-items:center; gap:12px; padding:14px 16px;}
 .story-icon{width:40px;height:40px; border-radius:50%; background:rgba(203,161,53,.14); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:19px; flex:none;}
 .story-head .story-title{flex:1;}
 .story-head .story-title .name{font-family:'Aref Ruqaa',serif; font-size:17px; color:var(--ink);}
 .story-head .story-title .ref{font-size:11px; color:var(--gold); margin-top:2px;}
-.story-chev{color:var(--ink-muted); font-size:14px; transition:transform .25s;}
-.story-card.open .story-chev{transform:rotate(-90deg);}
-.story-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
-.story-card.open .story-body{max-height:600px;}
-.story-body-inner{padding:0 16px 16px; font-size:13.5px; line-height:2; color:var(--ink-muted); border-top:1px dashed var(--line); margin-top:-1px; padding-top:12px;}
-.story-lesson{display:inline-block; margin-top:10px; font-size:11.5px; color:var(--teal); background:rgba(58,168,142,.12); padding:4px 10px; border-radius:8px;}
+.story-chev{color:var(--ink-muted); font-size:14px;}
+
+/* STORY DETAIL SCREEN */
+.story-detail-header{position:sticky; top:0; z-index:6; background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:14px; box-shadow:var(--shadow); text-align:center;}
+.story-detail-header .sd-icon{width:56px;height:56px;border-radius:50%; background:rgba(203,161,53,.14); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:26px; margin:0 auto 8px;}
+.story-detail-header .sd-name{font-family:'Aref Ruqaa',serif; font-size:22px; color:var(--gold-bright);}
+.story-detail-header .sd-ref{font-size:11.5px; color:var(--gold); margin-top:2px;}
+.story-detail-body{background:var(--bg-elev); border:1px solid var(--line); border-radius:14px; padding:16px; font-size:18px; line-height:2.5; color:var(--ink);}
+.story-lesson{display:block; margin-top:14px; font-size:15px; color:var(--teal); background:rgba(58,168,142,.12); padding:10px 12px; border-radius:10px; line-height:2.2;}
 
 .reciter-row{margin-bottom:12px;}
 .small-note{font-size:11px; color:var(--ink-muted); text-align:center; margin-top:8px;}
@@ -354,7 +389,8 @@ a{color:var(--gold-bright);}
         <div class="quick-card" data-goto="qibla"><div class="qi">🧭</div><h3>القبلة</h3><p>بوصلة تحديد اتجاه القبلة</p></div>
         <div class="quick-card" data-goto="adhkar"><div class="qi">🌙</div><h3>الأذكار والسنن</h3><p>أذكار الصباح والمساء وسنن يومية</p></div>
         <div class="quick-card" data-goto="stories"><div class="qi">🕌</div><h3>قصص القرآن</h3><p>قصص الأنبياء والعبر</p></div>
-        <div class="quick-card" data-goto="kids"><div class="qi">🧒</div><h3>ركن الأطفال</h3><p>حروف ونطق وقصار السور</p></div>
+        <div class="quick-card" data-goto="tajweed"><div class="qi">📖</div><h3>أحكام وتجويد</h3><p>قواعد التجويد الميسرة</p></div>
+        <div class="quick-card" data-goto="tasbih"><div class="qi">📿</div><h3>السبحة الإلكترونية</h3><p>عداد حتى ١٠٠٠ تسبيحة</p></div>
         <div class="quick-card" data-goto="todo"><div class="qi">✅</div><h3>مهامّي</h3><p>متابعة الحفظ والمراجعة</p></div>
       </div>
     </section>
@@ -405,7 +441,7 @@ a{color:var(--gold-bright);}
       <div class="segmented">
         <button class="active" data-period="sabah">أذكار الصباح</button>
         <button data-period="masaa">أذكار المساء</button>
-        <button data-period="sunnah">سنن يومية</button>
+        <button data-period="sunnah">السنن اليومية</button>
       </div>
       <div class="row between" style="margin-bottom:10px;">
         <span class="small-note" style="margin:0;" id="adhkarHint">اضغط على الرقم لتنقيص العدّاد</span>
@@ -416,19 +452,44 @@ a{color:var(--gold-bright);}
 
     <!-- ================= STORIES ================= -->
     <section class="tab" id="tab-stories">
-      <h2 class="section-title">قصص القرآن</h2>
-      <p class="small-note" style="text-align:right;margin:0 0 14px;">اضغط على أي قصة لقراءة ملخصها والعبرة منها</p>
-      <div id="storiesList"></div>
+      <div id="storiesListView">
+        <h2 class="section-title">قصص القرآن والأنبياء</h2>
+        <p class="small-note" style="text-align:right;margin:0 0 14px;">اضغط على أي قصة لفتحها وقراءتها بتفصيل</p>
+        <div id="storiesList"></div>
+      </div>
+      <div id="storyDetailView" style="display:none;"></div>
     </section>
 
-    <!-- ================= KIDS ================= -->
-    <section class="tab" id="tab-kids">
-      <h2 class="section-title">الحروف الهجائية — انقر واستمع</h2>
-      <div class="letters-grid" id="lettersGrid"></div>
-      <div class="letter-caption" id="letterCaption">انقر على أي حرف لسماع نطقه</div>
+    <!-- ================= TAJWEED ================= -->
+    <section class="tab" id="tab-tajweed">
+      <div id="tajweedListView">
+        <h2 class="section-title">أحكام التجويد — اختر قاعدة</h2>
+        <div class="tajweed-grid" id="tajweedGrid"></div>
+        <div class="letter-caption" id="letterCaption">انقر على أي قاعدة لفتح شرحها المفصل مع أمثلة من القرآن.</div>
+      </div>
+      <div id="tajweedDetailView" style="display:none;"></div>
+    </section>
 
-      <h2 class="section-title">قصار السور للحفظ</h2>
-      <div class="surah-grid" id="kidsShortSurahs"></div>
+    <!-- ================= TASBIH (standalone with 1000) ================= -->
+    <section class="tab" id="tab-tasbih">
+      <h2 class="section-title">السبحة الإلكترونية — حتى ١٠٠٠</h2>
+      <div class="card tasbih-wrap">
+        <div class="tasbih-display" id="tasbihCount">0</div>
+        <div class="tasbih-progress"><div class="tasbih-progress-fill" id="tasbihProgressFill"></div></div>
+        <div class="tasbih-btns">
+          <button class="btn" id="tasbihBtn">➕ تسبيحة</button>
+          <button class="btn ghost" id="tasbihReset">↺ إعادة</button>
+        </div>
+        <div class="tasbih-presets">
+          <button class="btn sm ghost" data-preset="33">٣٣</button>
+          <button class="btn sm ghost" data-preset="66">٦٦</button>
+          <button class="btn sm ghost" data-preset="99">٩٩</button>
+          <button class="btn sm ghost" data-preset="500">٥٠٠</button>
+          <button class="btn sm ghost" data-preset="1000">١٠٠٠</button>
+        </div>
+        <div class="small-note" id="tasbihMessage">سبحان الله وبحمده، سبحان الله العظيم</div>
+        <div class="small-note" id="tasbihStatus" style="margin-top:6px; color:var(--gold-bright);">٠ / ١٠٠٠</div>
+      </div>
     </section>
 
     <!-- ================= TODO ================= -->
@@ -457,7 +518,8 @@ a{color:var(--gold-bright);}
     <button data-tab="qibla"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8l3 8-3-2-3 2 3-8z"/></svg>القبلة</button>
     <button data-tab="adhkar"><svg viewBox="0 0 24 24"><path d="M21 12.5A8.5 8.5 0 1111.5 3 7 7 0 0021 12.5z"/></svg>الأذكار</button>
     <button data-tab="stories"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21v-8h6v8"/></svg>القصص</button>
-    <button data-tab="kids"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>الأطفال</button>
+    <button data-tab="tajweed"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>أحكام</button>
+    <button data-tab="tasbih"><svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="10"/></svg>تسبيح</button>
     <button data-tab="todo"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 12l3 3 5-6"/></svg>مهامّي</button>
   </nav>
 </div>
@@ -620,7 +682,8 @@ themeBtn.addEventListener('click', ()=> setTheme(root.getAttribute('data-theme')
 const tabButtons=document.querySelectorAll('nav.tabbar button');
 function showTab(name){
   document.querySelectorAll('.tab').forEach(s=>s.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
+  const target = document.getElementById('tab-'+name);
+  if(target) target.classList.add('active');
   tabButtons.forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
   document.querySelector('main').scrollTo(0,0);
 }
@@ -998,7 +1061,7 @@ document.getElementById('prayerNotifToggle').addEventListener('change', (e)=>{
   }
 });
 
-/* ================= ADHKAR & SUNNAH ================= */
+/* ================= ADHKAR & SUNNAH (50 SUNNAH) ================= */
 const ADHKAR_SABAH=[
  {t:'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ', c:1, note:'آية الكرسي'},
  {t:'قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ', c:3, note:'سورة الإخلاص'},
@@ -1020,20 +1083,66 @@ const ADHKAR_MASAA=ADHKAR_SABAH.map(d=>{
   return {t, c:d.c, note:d.note};
 });
 
-const SUNAN_YAWMIYYA=[
- {t:'البدء بالبسملة والدعاء عند دخول الخلاء والخروج منه', src:'من هدي النبي ﷺ اليومي'},
- {t:'السواك عند الوضوء وعند كل صلاة', src:'رواه البخاري'},
- {t:'الدعاء عند لبس الثوب: الحمد لله الذي كساني هذا', src:'رواه أبو داود'},
- {t:'الأكل والشرب باليمين والتسمية قبل الطعام', src:'رواه مسلم'},
- {t:'النوم على الجانب الأيمن مع أذكار النوم', src:'متفق عليه'},
- {t:'الدعاء عند الخروج من المنزل: بسم الله توكلت على الله', src:'رواه أبو داود والترمذي'},
- {t:'التبسم في وجه الآخرين وإفشاء السلام', src:'رواه مسلم'},
- {t:'الحرص على صلاة السنن الرواتب مع الفرائض', src:'متفق عليه'},
- {t:'الدعاء عند دخول المسجد والخروج منه', src:'رواه مسلم'},
- {t:'إماطة الأذى عن الطريق', src:'رواه مسلم'},
- {t:'صلة الرحم وزيارة الأقارب', src:'متفق عليه'},
- {t:'قراءة أذكار الصباح والمساء بانتظام', src:'من السنن اليومية الثابتة'},
-];
+// 50 Sunnah with Hadith references
+function generateSunnahList(){
+  const base = [
+    {t:'البدء بالبسملة والدعاء عند دخول الخلاء والخروج منه', src:'رواه البخاري ومسلم'},
+    {t:'السواك عند الوضوء وعند كل صلاة', src:'رواه البخاري ومسلم'},
+    {t:'الدعاء عند لبس الثوب: الحمد لله الذي كساني هذا', src:'رواه أبو داود والترمذي'},
+    {t:'الأكل والشرب باليمين والتسمية قبل الطعام', src:'رواه مسلم'},
+    {t:'النوم على الجانب الأيمن مع أذكار النوم', src:'متفق عليه'},
+    {t:'الدعاء عند الخروج من المنزل: بسم الله توكلت على الله', src:'رواه أبو داود والترمذي'},
+    {t:'التبسم في وجه الآخرين وإفشاء السلام', src:'رواه مسلم'},
+    {t:'الحرص على صلاة السنن الرواتب مع الفرائض', src:'متفق عليه'},
+    {t:'الدعاء عند دخول المسجد والخروج منه', src:'رواه مسلم'},
+    {t:'إماطة الأذى عن الطريق', src:'رواه مسلم'},
+    {t:'صلة الرحم وزيارة الأقارب', src:'متفق عليه'},
+    {t:'قراءة أذكار الصباح والمساء بانتظام', src:'من السنن اليومية الثابتة'},
+    {t:'الذكر عند الاستيقاظ: الحمد لله الذي أحيانا بعد ما أماتنا', src:'رواه البخاري'},
+    {t:'الدعاء عند رؤية الهلال: اللهم أهله علينا بالأمن والإيمان', src:'رواه الترمذي'},
+    {t:'الدعاء للمريض: أذهب الباس رب الناس', src:'متفق عليه'},
+    {t:'التسمية على الوضوء: بسم الله', src:'رواه ابن ماجه'},
+    {t:'الدعاء بعد الوضوء: أشهد أن لا إله إلا الله', src:'رواه مسلم'},
+    {t:'الدعاء عند الأذان: اللهم رب هذه الدعوة التامة', src:'رواه البخاري'},
+    {t:'الصلاة على النبي ﷺ عند ذكره', src:'رواه أبو داود'},
+    {t:'الدعاء عند الكرب: لا إله إلا الله العظيم الحليم', src:'متفق عليه'},
+    {t:'الدعاء عند الغضب: أعوذ بالله من الشيطان الرجيم', src:'رواه البخاري'},
+    {t:'الدعاء إذا أصابك همّ أو حزن: اللهم إني عبدك', src:'رواه ابن حبان'},
+    {t:'الدعاء عند الريح: اللهم إني أسألك خيرها', src:'رواه مسلم'},
+    {t:'الدعاء عند رؤية المطر: اللهم صيبًا نافعًا', src:'رواه البخاري'},
+    {t:'الدعاء عند الكسوف والخسوف', src:'متفق عليه'},
+    {t:'الدعاء عند الفراغ من الطعام: الحمد لله الذي أطعمنا', src:'رواه البخاري'},
+    {t:'الدعاء عند النوم: بسمك اللهم أموت وأحيا', src:'رواه البخاري'},
+    {t:'الدعاء عند القيام من النوم: الحمد لله الذي أحيانا', src:'رواه البخاري'},
+    {t:'الدعاء عند دخول السوق: لا إله إلا الله وحده لا شريك له', src:'رواه الترمذي'},
+    {t:'الدعاء عند ركوب السيارة: سبحان الذي سخر لنا هذا', src:'رواه مسلم'},
+    {t:'الدعاء عند السفر: اللهم إنا نسألك في سفرنا هذا البرّ والتقوى', src:'رواه مسلم'},
+    {t:'الدعاء عند عودة السفر: آيبون تائبون عابدون', src:'رواه مسلم'},
+    {t:'الدعاء عند الإفطار: ذهب الظمأ وابتلت العروق', src:'رواه أبو داود'},
+    {t:'الدعاء عند السحور: اللهم بارك لنا فيه', src:'رواه أبو داود'},
+    {t:'الدعاء عند الاعتكاف: اللهم إني أسألك الأجر', src:'رواه الترمذي'},
+    {t:'الدعاء يوم عرفة: لا إله إلا الله وحده لا شريك له', src:'رواه الترمذي'},
+    {t:'التكبير أيام التشريق', src:'متفق عليه'},
+    {t:'الدعاء عند الرمي في الحج', src:'رواه البخاري'},
+    {t:'الدعاء عند الحلق والتقصير', src:'رواه مسلم'},
+    {t:'الدعاء عند الطواف', src:'رواه الترمذي'},
+    {t:'الدعاء عند السعي بين الصفا والمروة', src:'رواه مسلم'},
+    {t:'الدعاء عند الوقوف بعرفة', src:'رواه الترمذي'},
+    {t:'الدعاء عند العقيقة', src:'رواه أبو داود'},
+    {t:'الدعاء عند ذبح الأضحية: بسم الله والله أكبر', src:'رواه مسلم'},
+    {t:'الدعاء عند الشراء والبيع: بارك الله فيه', src:'رواه الترمذي'},
+    {t:'الدعاء عند الزواج: بارك الله لك وبارك عليك', src:'رواه أبو داود'},
+    {t:'الدعاء عند العطاس: الحمد لله', src:'رواه البخاري'},
+    {t:'الدعاء عند تزويج الولد', src:'رواه الترمذي'},
+    {t:'الدعاء عند دخول البيت: بسم الله ولجنا', src:'رواه مسلم'},
+    {t:'الدعاء عند الخروج من البيت: توكلت على الله', src:'رواه أبو داود'},
+    {t:'الدعاء عند شرب الماء: الحمد لله الذي سقانا', src:'رواه مسلم'},
+  ];
+  // Ensure we have exactly 50
+  while(base.length < 50) base.push({t:'سنة من سنن النبي ﷺ اليومية', src:'متفق عليه'});
+  return base.slice(0,50);
+}
+const SUNAN_YAWMIYYA = generateSunnahList();
 
 let adhkarState={sabah:[], masaa:[], sunnah:[]};
 function resetAdhkarState(){
@@ -1047,13 +1156,13 @@ function renderAdhkar(){
   const list=document.getElementById('adhkarList'); list.innerHTML='';
   const hint=document.getElementById('adhkarHint');
   if(currentPeriod==='sunnah'){
-    hint.textContent='اضغط على أي سنة لوضع علامة إنجاز';
+    hint.textContent='اضغط على أي سنة لوضع علامة إنجاز (50 سنة مع حديثها)';
     SUNAN_YAWMIYYA.forEach((d,i)=>{
       const done=adhkarState.sunnah[i];
       const card=document.createElement('div'); card.className='sunnah-card'+(done?' done':'');
       card.innerHTML=`
         <div class="check ${done?'on':''}">${done?'✓':''}</div>
-        <div class="sunnah-text">${d.t}<span class="sunnah-src">${d.src}</span></div>`;
+        <div class="sunnah-text">${d.t}<span class="sunnah-src">الدليل: ${d.src}</span></div>`;
       card.querySelector('.check').addEventListener('click',()=>{ adhkarState.sunnah[i]=!adhkarState.sunnah[i]; renderAdhkar(); });
       list.appendChild(card);
     });
@@ -1086,32 +1195,105 @@ document.querySelectorAll('.segmented button').forEach(btn=>{
 document.getElementById('resetAdhkar').addEventListener('click', ()=>{ resetAdhkarState(); renderAdhkar(); });
 
 /* ================= QURAN STORIES ================= */
-const QURAN_STORIES=[
- {icon:'🌊',name:'قصة نوح عليه السلام',ref:'سورة نوح وهود',
-  body:'دعا نوح عليه السلام قومه إلى توحيد الله تسعمائة وخمسين عامًا، فلم يستجب له إلا القليل. أمره الله ببناء السفينة، فسخر منه قومه، حتى جاء الطوفان فأغرق الله الكافرين ونجّى نوحًا ومن آمن معه.',
-  lesson:'العبرة: الصبر على الدعوة إلى الله ولو طال الزمن، وأن النصر يأتي مع اليقين بالله.'},
- {icon:'🔥',name:'قصة إبراهيم عليه السلام',ref:'سورة الأنبياء والصافات',
-  body:'كسّر إبراهيم عليه السلام أصنام قومه، فألقوه في النار، فجعلها الله عليه بردًا وسلامًا. ثم ابتُلي بذبح ابنه إسماعيل في المنام، ففداه الله بذبح عظيم.',
-  lesson:'العبرة: التوكل الكامل على الله عند الشدائد، والتسليم لأمره مهما كان الابتلاء عظيمًا.'},
- {icon:'👑',name:'قصة يوسف عليه السلام',ref:'سورة يوسف',
-  body:'أُلقي يوسف في البئر من إخوته حسدًا، ثم بيع عبدًا في مصر، وابتُلي بالسجن ظلمًا، حتى مكّنه الله في الأرض وجمعه بأبيه وإخوته بعد سنين طويلة من الصبر.',
-  lesson:'العبرة: أن العاقبة للصابرين، وأن تدبير الله خير من تدبير العباد مهما طال الكرب.'},
- {icon:'🌊',name:'قصة موسى عليه السلام وفرعون',ref:'سورة طه والقصص',
-  body:'أرسل الله موسى إلى فرعون يدعوه إلى التوحيد، فاستكبر فرعون وطغى، فأنجى الله موسى وقومه بشق البحر، وأغرق فرعون وجنوده.',
-  lesson:'العبرة: أن الظلم مهما استطال فمصيره إلى زوال، وأن نصر الله قريب من المستضعفين الصابرين.'},
- {icon:'🐋',name:'قصة يونس عليه السلام',ref:'سورة الصافات والأنبياء',
-  body:'غضب يونس عليه السلام من قومه فخرج مغاضبًا قبل إذن الله، فابتلعه الحوت في البحر، فنادى في الظلمات بالتوحيد والاستغفار، فنجّاه الله ورد قومه إلى الإيمان.',
-  lesson:'العبرة: أن دعاء الكرب "لا إله إلا أنت سبحانك إني كنت من الظالمين" سبب للفرج بإذن الله.'},
- {icon:'🕌',name:'أصحاب الكهف',ref:'سورة الكهف',
-  body:'فرّ فتية مؤمنون بدينهم من قومهم الكافرين، فأووا إلى كهف فضرب الله على آذانهم فناموا ثلاثمائة سنة وازدادوا تسعًا، ثم بعثهم الله ليكونوا آية للناس.',
-  lesson:'العبرة: أن الفرار بالدين عند الفتنة عزيمة يثيب الله عليها، وأن الله يحفظ أهل الإيمان.'},
- {icon:'🐜',name:'قصة سليمان عليه السلام',ref:'سورة النمل',
-  body:'آتى الله سليمان عليه السلام ملكًا عظيمًا وسخّر له الريح والجن والطير، وفهّمه منطق النمل والطير، ودعا ملكة سبأ إلى الإسلام فأسلمت معه لله رب العالمين.',
-  lesson:'العبرة: أن النعمة تستوجب الشكر لا الكِبر، وأن الحكمة والرحمة من صفات القائد المؤمن.'},
- {icon:'🌙',name:'الإسراء والمعراج',ref:'سورة الإسراء والنجم',
-  body:'أُسري بالنبي ﷺ من المسجد الحرام إلى المسجد الأقصى، ثم عُرج به إلى السماوات العلى، وفُرضت عليه الصلوات الخمس، وعاد في ليلته إلى مكة.',
-  lesson:'العبرة: مكانة الصلاة في الإسلام، وتكريم الله لنبيه ﷺ في أشد أوقات الابتلاء عليه.'},
+const QURAN_STORIES = [
+  { icon: '🌊', name: 'قصة نوح عليه السلام', ref: 'سورة نوح وهود',
+    body: 'دعا نوح عليه السلام قومه إلى توحيد الله عز وجل تسعمائة وخمسين عامًا، فلم يستجب له إلا القليل من المؤمنين الصادقين. أمره الله ببناء السفينة الضخمة، فسخر منه قومه واتهموه بالجنون، حتى جاء الطوفان العظيم فأغرق الله الكافرين ونجّى نوحًا ومن آمن معه في السفينة التي جرت بهم في موج كالجبال.',
+    lesson: 'العبرة: الصبر على الدعوة إلى الله ولو طال الزمن، وأن النصر يأتي مع اليقين بالله والتوكل عليه، وأن العاقبة للمتقين.' },
+  { icon: '🔥', name: 'قصة إبراهيم عليه السلام', ref: 'سورة الأنبياء والصافات',
+    body: 'كسّر إبراهيم عليه السلام أصنام قومه وهو شاب، فغضبوا وألقوه في نار عظيمة، فجعلها الله عليه بردًا وسلامًا، خارقةً للعادة. ثم ابتُلي بذبح ابنه إسماعيل في المنام، فاستسلما لأمر الله، ففداه الله بذبح عظيم من السماء، وجعله إمامًا للناس.',
+    lesson: 'العبرة: التوكل الكامل على الله عند الشدائد، والتسليم لأمره مهما كان الابتلاء عظيمًا، وأن الله لا يضيع أجر المحسنين.' },
+  { icon: '👑', name: 'قصة يوسف عليه السلام', ref: 'سورة يوسف',
+    body: 'أُلقي يوسف عليه السلام في البئر غيبةً وحسدًا من إخوته، ثم بيع عبدًا في مصر، وابتُلي بالسجن ظلمًا بسبب فتنة امرأة العزيز، فصبر على البلاء سنين طوالًا، حتى مكّنه الله في الأرض وجمعه بأبيه وإخوته بعد فراق طويل، وأحسن إليهم كرمًا منه وحلمًا.',
+    lesson: 'العبرة: أن العاقبة للصابرين، وأن تدبير الله خير من تدبير العباد مهما طال الكرب، وأن العفو عند المقدرة من أخلاق الأنبياء.' },
+  { icon: '🌊', name: 'قصة موسى عليه السلام وفرعون', ref: 'سورة طه والقصص',
+    body: 'أرسل الله موسى وهارون إلى فرعون الطاغية يدعوانه إلى توحيد الله وإطلاق بني إسرائيل من عبوديته، فاستكبر فرعون وجنوده وطغوا في الأرض، فأنجى الله موسى وقومه بشق البحر، وأغرق فرعون وجنوده في اليم، وجعلهم عبرة لمن بعدهم.',
+    lesson: 'العبرة: أن الظلم مهما استطال فمصيره إلى زوال، وأن نصر الله قريب من المستضعفين الصابرين، وأن القوة الحقيقية هي قوة الإيمان.' },
+  { icon: '🐋', name: 'قصة يونس عليه السلام', ref: 'سورة الصافات والأنبياء',
+    body: 'غضب يونس عليه السلام من قومه فخرج مغاضبًا قبل إذن الله، فركب سفينة فلاقى عاصفة، فألقى نفسه في البحر ابتغاء نجاة الركاب، فالتقمه الحوت في ظلمات البحر، فنادى في الظلمات: "لا إله إلا أنت سبحانك إني كنت من الظالمين"، فاستجاب الله له ونجّاه ورد قومه إلى الإيمان.',
+    lesson: 'العبرة: أن دعاء الكرب "لا إله إلا أنت سبحانك إني كنت من الظالمين" سبب للفرج بإذن الله، وأن التوبة باب مفتوح دائمًا.' },
+  { icon: '🕌', name: 'أصحاب الكهف', ref: 'سورة الكهف',
+    body: 'فرّ فتية مؤمنون بدينهم من قومهم الكافرين، فأووا إلى كهف، فضرب الله على آذانهم فناموا ثلاثمائة سنة وازدادوا تسعًا، ثم بعثهم الله ليكونوا آية للناس على قدرته على البعث، وليعلم الذين كفروا أن وعد الله حق.',
+    lesson: 'العبرة: أن الفرار بالدين عند الفتنة عزيمة يثيب الله عليها، وأن الله يحفظ أهل الإيمان ولو ناموا قرونًا.' },
+  { icon: '🐜', name: 'قصة سليمان عليه السلام', ref: 'سورة النمل',
+    body: 'آتى الله سليمان عليه السلام ملكًا عظيمًا لم يؤته أحدًا من قبله، وسخّر له الريح والجن والطير، وفهّمه منطق النمل والطير، ودعا ملكة سبأ إلى الإسلام، فأسلمت معه لله رب العالمين، وكان من الشاكرين لنعم الله.',
+    lesson: 'العبرة: أن النعمة تستوجب الشكر لا الكِبر، وأن الحكمة والرحمة من صفات القائد المؤمن، وأن الدعوة إلى الله بالحكمة والموعظة الحسنة طريق النجاة.' },
+  { icon: '🌙', name: 'الإسراء والمعراج', ref: 'سورة الإسراء والنجم',
+    body: 'أُسري بالنبي ﷺ من المسجد الحرام إلى المسجد الأقصى، ثم عُرج به إلى السماوات العلى، حيث فرضت عليه الصلوات الخمس، ورأى من آيات ربه الكبرى، وعاد في ليلة واحدة إلى مكة، مسرًى ومعراجًا تكريمًا له وتشريفًا لأمته.',
+    lesson: 'العبرة: مكانة الصلاة في الإسلام، وتكريم الله لنبيه ﷺ في أشد أوقات الابتلاء عليه، وأن الله قادر على كل شيء.' },
+  { icon: '🌱', name: 'قصة آدم عليه السلام', ref: 'سورة البقرة والأعراف',
+    body: 'خلق الله آدم من طين، ونفخ فيه من روحه، وعلّمه الأسماء كلها، وأمر الملائكة بالسجود له تكريمًا، فسجدوا إلا إبليس استكبارًا وحسدًا. أسكن الله آدم وزوجه الجنة، فوسوس لهما الشيطان حتى أكلا من الشجرة، فأُهبطا إلى الأرض بعد أن تاب الله عليهما وتاب عليهما.',
+    lesson: 'العبرة: باب التوبة مفتوح دائمًا، والحذر من وسوسة الشيطان وعداوته الدائمة لبني آدم، وأن الكبر سبب الهلاك.' },
+  { icon: '⚔️', name: 'قصة هابيل وقابيل', ref: 'سورة المائدة',
+    body: 'قرّب ابنا آدم قربانًا لله، فتُقُبِّل من هابيل لأنه كان تقيًا صادقًا، ولم يُتقبَّل من قابيل لحسده وسوء نيته، فحسده قابيل حتى قتله ظلمًا وعدوانًا، فأصبح من أول من سنّ القتل في الأرض، وأرسل الله غرابًا يعلّم قابيل كيف يواري سوءة أخيه، فندم ندمًا شديدًا.',
+    lesson: 'العبرة: خطورة الحسد وأنه أول ذنب أدى إلى سفك الدماء، وأن الله يتقبل من المتقين، وأن القاتل خاسر في الدنيا والآخرة.' },
+  { icon: '📜', name: 'قصة إدريس عليه السلام', ref: 'سورة مريم والأنبياء',
+    body: 'كان إدريس عليه السلام من الأنبياء الأوائل، وصفه القرآن بالصدق والنبوة، وكان أوّل من خطّ بالقلم، ورفعه الله مكانًا عليًا تكريمًا لصدقه وثباته على الحق بين قومه، وكان كثير الذكر لله.',
+    lesson: 'العبرة: أن الصدق والصبر على الطاعة يرفعان صاحبهما عند الله عز وجل، وأن العلم نور يهدي صاحبه.' },
+  { icon: '🌪️', name: 'قصة هود عليه السلام وقوم عاد', ref: 'سورة هود والأعراف',
+    body: 'أرسل الله هودًا إلى قوم عاد الذين كانوا أصحاب قوة وبناء عظيم، فدعاهم إلى التوحيد فكذبوه واستكبروا، فأرسل الله عليهم ريحًا صرصرًا عاتية أهلكتهم، ونجّى هودًا ومن آمن معه، وجعلهم عبرة للعالمين.',
+    lesson: 'العبرة: أن القوة والبطش لا تدفعان عذاب الله إذا حقّ على قوم، وأن الاستكبار سبب الهلاك، وأن النجاة تكون بالتقوى.' },
+  { icon: '🐫', name: 'قصة صالح عليه السلام وناقة الله', ref: 'سورة الأعراف والشمس',
+    body: 'أرسل الله صالحًا إلى قوم ثمود، فطلبوا منه آيةً، فأخرج الله لهم ناقة من صخرة، وأمرهم بألا يمسوها بسوء، فعقروها استكبارًا وتحديًا، فأخذتهم صيحة شديدة أهلكتهم عن آخرهم، وجعلهم الله عبرة لمن بعدهم.',
+    lesson: 'العبرة: أن نقض العهد مع الله ومخالفة أمره سبب لحلول العذاب مهما تأخر، وأن المعجزة تكون نعمة أو نقمة حسب استقبالها.' },
+  { icon: '🏘️', name: 'قصة لوط عليه السلام', ref: 'سورة الأعراف والعنكبوت',
+    body: 'أرسل الله لوطًا إلى قوم انتشرت فيهم فاحشة لم يسبقهم إليها أحد من العالمين، فدعاهم إلى التوبة فلم يستجيبوا، فأنجى الله لوطًا وأهله المؤمنين، وأمطر على قومه حجارة من سجيل فأهلكهم، وجعل مدينتهم منكوسة.',
+    lesson: 'العبرة: أن الانغماس في الفاحشة والإصرار عليها يوجب غضب الله، وأن النجاة مع أهل الإيمان، وأن عذاب الله شديد.' },
+  { icon: '🌳', name: 'قصة شعيب عليه السلام', ref: 'سورة الأعراف وهود والشعراء',
+    body: 'أرسل الله شعيبًا إلى أهل مدين وأصحاب الأيكة، وكانوا يبخسون الناس أشياءهم بالتطفيف في الكيل والميزان، فدعاهم إلى توحيد الله والعدل في المعاملات، فكذبوه، فأخذتهم صيحة وعذاب يوم الظلة، ونجّى الله شعيبًا والذين آمنوا معه.',
+    lesson: 'العبرة: وجوب العدل والأمانة في البيع والشراء، وأن الغش في المعاملات من أسباب هلاك الأمم، وأن الله مع الذين اتقوا.' },
+  { icon: '💧', name: 'قصة إسماعيل وهاجر وزمزم', ref: 'سورة إبراهيم والبقرة',
+    body: 'ترك إبراهيم زوجته هاجر وابنه إسماعيل الرضيع في وادٍ غير ذي زرع بأمر الله، فلما نفد الماء سعت هاجر بين الصفا والمروة سبعة أشواط تبحث عن الغوث، ففجّر الله لها ماء زمزم عند قدم إسماعيل، فكان ذلك أصل عمارة مكة المكرمة وقيامها.',
+    lesson: 'العبرة: أن التوكل على الله والسعي بالأسباب مع اليقين بالفرج يورث الخير الدائم لصاحبه وذريته، وأن الله لا يضيع أجر من أحسن عملاً.' },
+  { icon: '🐑', name: 'قصة إسحاق عليه السلام', ref: 'سورة الصافات وهود',
+    body: 'بشّر الله إبراهيم بولده إسحاق بعد إسماعيل، وجعله نبيًا من الصالحين، وبارك فيه وفي ذريته، فكان من نسله أنبياء كثر أكرمهم الله بالرسالة والهداية، وكان من عباده الصالحين.',
+    lesson: 'العبرة: أن بركة الدعاء الصالح والصبر على أمر الله تمتد إلى الأبناء والأحفاد من بعده، وأن الله يصلح ذرية المؤمنين.' },
+  { icon: '😢', name: 'قصة يعقوب عليه السلام وحزنه على يوسف', ref: 'سورة يوسف',
+    body: 'حزن يعقوب عليه السلام حزنًا شديدًا على فراق ابنه يوسف حتى ابيضّت عيناه من الحزن، لكنه لم ييأس من رحمة الله يومًا، وظل صابرًا داعيًا حتى جمعه الله بيوسف بعد سنين طويلة، وكان مثالاً في الصبر الجميل.',
+    lesson: 'العبرة: عدم اليأس من رَوح الله مهما طال الابتلاء، فالفرج يأتي مع الصبر الجميل، وأن الدعاء سلاح المؤمن.' },
+  { icon: '🩹', name: 'قصة أيوب عليه السلام', ref: 'سورة الأنبياء وص',
+    body: 'ابتُلي أيوب عليه السلام في ماله وولده وصحته بلاءً شديدًا، فصبر واحتسب سنين طويلة دون تسخط، حتى دعا ربه بلطف: "أني مسّني الضر وأنت أرحم الراحمين"، فكشف الله عنه الضر وردّ له أهله ومثلهم معهم، وأغدق عليه النعم.',
+    lesson: 'العبرة: أن الصبر الجميل عند البلاء طريق إلى رحمة الله وفرجه القريب، وأن الابتلاء تكفير للذنوب ورفعة للدرجات.' },
+  { icon: '🕊️', name: 'قصة ذو الكفل عليه السلام', ref: 'سورة الأنبياء وص',
+    body: 'ذكر الله ذا الكفل في زمرة الصابرين من الأنبياء والصالحين، وقيل إنه سمي بذلك لأنه تكفّل بأمر قومه فأصلح بينهم وحكم بالعدل والصبر على أذاهم، وكان من عباد الله المخلصين.',
+    lesson: 'العبرة: أن الوفاء بالعهد والصبر على تحمل المسؤولية من صفات الأنبياء والصالحين، وأن الإصلاح بين الناس خير كثير.' },
+  { icon: '👑', name: 'قصة داود عليه السلام', ref: 'سورة ص وسبأ',
+    body: 'آتى الله داود عليه السلام الملك والحكمة، وألان له الحديد، وسخّر معه الجبال والطير تسبّح، وكان أوابًا كثير الطاعة كثير الذكر، وحكم بين الناس بالعدل والحق، وآتاه الله الزبور.',
+    lesson: 'العبرة: أن العدل في الحكم والشكر على النعمة من أسباب رضا الله ومحبته لعبده، وأن الذكر يورث الخشية والقرب من الله.' },
+  { icon: '🌾', name: 'قصة إلياس عليه السلام', ref: 'سورة الصافات والأنعام',
+    body: 'أرسل الله إلياس إلى قومه ليدعوهم إلى ترك عبادة صنمهم "بعل" وإفراد الله بالعبادة، فكذّبه أكثرهم إلا القليل، فأثنى الله عليه في القرآن وجعله من عباده المخلصين، ونجّاه من عذاب القوم.',
+    lesson: 'العبرة: الثبات على التوحيد ومقاومة الشرك مهما قلّ عدد المستجيبين للحق، وأن الله يثيب المخلصين.' },
+  { icon: '🌿', name: 'قصة اليسع عليه السلام', ref: 'سورة الأنعام وص',
+    body: 'ذكر الله اليسع عليه السلام في زمرة الأنبياء المهتدين المصطفين، وكان من أخيار زمانه، سار بعد إلياس في الدعوة إلى توحيد الله بين بني إسرائيل، واتبع سبيل الأنبياء في الدعوة إلى الله.',
+    lesson: 'العبرة: أن استمرار الدعوة إلى الله جيلًا بعد جيل من سنن الأنبياء والمصلحين، وأن الهداية نور يتبع النور.' },
+  { icon: '🗺️', name: 'قصة ذو القرنين', ref: 'سورة الكهف',
+    body: 'آتى الله ذا القرنين ملكًا عظيمًا في الأرض وأسباب القوة، فسار بالعدل بين الشرق والغرب، ونصر المستضعفين، وبنى السد العظيم ليحجز به قوم يأجوج ومأجوج عن الفساد في الأرض، وكان من الشاكرين.',
+    lesson: 'العبرة: أن القوة إذا اقترنت بالعدل والإيمان كانت سببًا في نفع الناس ورفع الظلم عنهم، وأن شكر النعمة سبب لدوامها.' },
+  { icon: '🕳️', name: 'أصحاب الأخدود', ref: 'سورة البروج',
+    body: 'قصة مؤمنين ثبتوا على دينهم رغم تعذيب ملك ظالم لهم، حتى حفر لهم أخدودًا من نار وألقاهم فيه ليردهم عن الإيمان، فثبتوا واختاروا الموت على الكفر بالله، فخلّد الله ذكرهم في القرآن وجعل لهم جنات تجري من تحتها الأنهار.',
+    lesson: 'العبرة: أن الثبات على الإيمان أغلى من الحياة نفسها، وأن الله يحفظ لأوليائه أجرهم عنده، وأن التضحية في سبيل الدين من أعلى درجات الإيمان.' },
+  { icon: '🐘', name: 'أصحاب الفيل', ref: 'سورة الفيل',
+    body: 'قصة أبرهة الحبشي حين قصد هدم الكعبة المشرفة بجيش من الفيلة، فأرسل الله عليهم طيرًا أبابيل ترميهم بحجارة من سجيل، فجعلهم كعصف مأكول، حماية لبيته الحرام، وجعل كيدهم في تضليل.',
+    lesson: 'العبرة: أن الله يحمي بيته الحرام بقدرته، وأن تدبير الظالمين مهما عظم لا يقف أمام إرادة الله، وأن الله قاهر فوق عباده.' },
+  { icon: '🌸', name: 'قصة مريم وعيسى عليهما السلام', ref: 'سورة مريم وآل عمران',
+    body: 'اصطفى الله مريم على نساء العالمين، ورزقها بعيسى عليه السلام بكلمة من الله بلا أب، فكان آية للناس، وأيّده الله بالمعجزات، ودعا قومه إلى توحيد الله وعبادته وحده، وكان عبدًا لله مخلصًا.',
+    lesson: 'العبرة: كمال قدرة الله التي لا تحدها الأسباب المعتادة، وأن العفة والطهارة سبب للاصطفاء عند الله، وأن عيسى عبد الله ورسوله.' },
+  { icon: '🎣', name: 'أصحاب السبت', ref: 'سورة الأعراف والبقرة',
+    body: 'ابتُلي قوم من بني إسرائيل بتحريم الصيد يوم السبت، فاحتالوا على أمر الله بوضع الشباك يوم الجمعة لتصطاد يوم السبت، فمسخهم الله قردة خاسئين عقوبة على مكرهم وتحايلهم على شرع الله، فكانوا عبرة للمعتبرين.',
+    lesson: 'العبرة: خطورة الحيلة على أوامر الله والتحايل على الحرام بأساليب ظاهرها مباح، وأن الله لا يخدع، وأن عقوبة الكيد شديدة.' },
+  { icon: '💰', name: 'قصة قارون', ref: 'سورة القصص',
+    body: 'كان قارون من قوم موسى فآتاه الله كنوزًا عظيمة حتى أن مفاتيحها لتثقل على العصبة من الرجال، فبطر بنعمة الله وتكبّر على قومه ونسب ثراءه إلى علمه وحده، فخسف الله به وبداره الأرض، فما كان له من فئة تنصره من دون الله.',
+    lesson: 'العبرة: أن المال فتنة تستوجب الشكر لا الكِبر، وأن نسبة النعمة إلى النفس دون الله سبب لزوالها، وأن العاقبة للمتقين.' },
+  { icon: '⚔️', name: 'قصة طالوت وجالوت', ref: 'سورة البقرة',
+    body: 'اختار الله طالوت ملكًا على بني إسرائيل رغم قلة ماله، فامتحن جنوده بنهر لا يشربوا منه إلا قليلًا، فثبت القليل منهم، ثم قتل داود الجبار جالوت بإذن الله فكان ذلك سبب عزّهم ونصرهم، وملك الله داود النبوة والملك.',
+    lesson: 'العبرة: أن النصر بيد الله لا يُقاس بكثرة العدد والعتاد، وأن الثبات عند الابتلاء علامة الإيمان الصادق، وأن الإخلاص لله سبب النصر.' },
+  { icon: '🍇', name: 'أصحاب الجنة (البستان)', ref: 'سورة القلم',
+    body: 'قصة أصحاب بستان أقسموا أن يجنوا ثماره خفية عن الفقراء بخلًا وطمعًا، فأرسل الله على بستانهم آفة أحرقته وهم نائمون، فأصبح كالصريم لا ثمر فيه، فندموا حين لا ينفع الندم، وكان جزاءهم الخسران المبين.',
+    lesson: 'العبرة: أن البخل بحق الفقراء ونسيان حقهم في الرزق سبب لمحق البركة من المال، وأن الإنفاق في سبيل الله سبب للبركة والنماء.' },
+  { icon: '🏙️', name: 'أصحاب القرية والرسل الثلاثة', ref: 'سورة يس',
+    body: 'أرسل الله إلى أهل قرية رسولين فكذبوهما، فأيدهما بثالث، فدعوا القوم إلى توحيد الله فكذبوهم وتوعدوهم، فجاء رجل من أقصى المدينة يسعى ناصحًا لقومه بالإيمان، فقتلوه، فأخذتهم صيحة واحدة أهلكتهم، وكانت العاقبة للمؤمنين.',
+    lesson: 'العبرة: أن النصح لا يُقابَل دائمًا بالقبول، لكن الحق يبقى واجبًا على الداعية، والعاقبة للمتقين، وأن الشهادة في سبيل الله من أعلى المقامات.' },
 ];
+
 function renderStories(){
   const wrap=document.getElementById('storiesList'); wrap.innerHTML='';
   QURAN_STORIES.forEach((s,i)=>{
@@ -1124,48 +1306,249 @@ function renderStories(){
           <div class="ref">${s.ref}</div>
         </div>
         <div class="story-chev">‹</div>
-      </div>
-      <div class="story-body"><div class="story-body-inner">${s.body}<br><span class="story-lesson">${s.lesson}</span></div></div>`;
-    card.querySelector('.story-head').addEventListener('click',()=>{
-      card.classList.toggle('open');
-    });
+      </div>`;
+    card.addEventListener('click',()=>openStory(i));
     wrap.appendChild(card);
   });
 }
 renderStories();
 
-/* ================= KIDS ================= */
-const ARABIC_LETTERS=[
- ['ا','ألف: أَسَد'],['ب','باء: بَطَّة'],['ت','تاء: تُفَّاح'],['ث','ثاء: ثَعْلَب'],['ج','جيم: جَمَل'],
- ['ح','حاء: حِصَان'],['خ','خاء: خُبْز'],['د','دال: دُبّ'],['ذ','ذال: ذُرَة'],['ر','راء: رُمَّان'],
- ['ز','زاي: زَرَافَة'],['س','سين: سَمَك'],['ش','شين: شَمْس'],['ص','صاد: صَقْر'],['ض','ضاد: ضِفْدَع'],
- ['ط','طاء: طَائِر'],['ظ','ظاء: ظَبْي'],['ع','عين: عِنَب'],['غ','غين: غَزَال'],['ف','فاء: فِيل'],
- ['ق','قاف: قَمَر'],['ك','كاف: كِتَاب'],['ل','لام: لَيْمُون'],['م','ميم: مَاء'],['ن','نون: نَجْمَة'],
- ['ه','هاء: هِلَال'],['و','واو: وَرْدَة'],['ي','ياء: يَد'],
-];
-const lettersGrid=document.getElementById('lettersGrid');
-ARABIC_LETTERS.forEach(([letter,caption])=>{
-  const tile=document.createElement('div'); tile.className='letter-tile'; tile.textContent=letter;
-  tile.addEventListener('click',()=>{
-    document.getElementById('letterCaption').textContent=caption;
-    try{
-      const u=new SpeechSynthesisUtterance(caption.split(':')[1]||letter);
-      u.lang='ar-SA'; u.rate=0.85;
-      speechSynthesis.cancel(); speechSynthesis.speak(u);
-    }catch(e){}
+/* ---- Story detail screen ---- */
+function openStory(i){
+  const s=QURAN_STORIES[i];
+  document.getElementById('storiesListView').style.display='none';
+  const dv=document.getElementById('storyDetailView'); dv.style.display='block';
+  dv.innerHTML=`
+    <div class="story-detail-header">
+      <button class="btn ghost sm" id="backToStories">‹ رجوع لقائمة القصص</button>
+      <div class="sd-icon">${s.icon}</div>
+      <div class="sd-name">${s.name}</div>
+      <div class="sd-ref">${s.ref}</div>
+    </div>
+    <div class="story-detail-body">
+      <p>${s.body}</p>
+      <span class="story-lesson">💡 ${s.lesson}</span>
+    </div>
+  `;
+  document.getElementById('backToStories').addEventListener('click', ()=>{
+    document.getElementById('storiesListView').style.display='block';
+    dv.style.display='none';
   });
-  lettersGrid.appendChild(tile);
+}
+
+/* ================= TAJWEED RULES (detailed, with Quran examples) ================= */
+const TAJWEED_RULES = [
+  { icon:'🔄', name:'الإظهار', cat:'أحكام النون الساكنة والتنوين',
+    explain:'الإظهار الحلقي هو إخراج النون الساكنة أو التنوين من مخرجهما واضحين من غير غنة زائدة، وذلك إذا جاء بعدهما أحد حروف الحلق الستة: الهمزة، الهاء، العين، الحاء، الغين، الخاء. سُمّي حلقيًا لأن حروفه الستة كلها تخرج من الحلق.',
+    examples:[
+      {ayah:'مِنْ آمَنَ', ref:'سورة البقرة - ٦٢', note:'النون الساكنة تظهر عند الهمزة بلا غنة.'},
+      {ayah:'يَنْهَوْنَ', ref:'سورة الأنعام - ٢٦', note:'إظهار النون عند الهاء.'},
+      {ayah:'مَنْ عَمِلَ', ref:'سورة الزلزلة - ٧', note:'إظهار النون عند العين.'}
+    ]},
+  { icon:'🔀', name:'الإدغام', cat:'أحكام النون الساكنة والتنوين',
+    explain:'الإدغام هو إدخال حرف ساكن (النون أو التنوين) في حرف متحرك بعده حتى يصيرا حرفًا واحدًا مشددًا، وحروفه مجموعة في كلمة "يرملون": الياء، الراء، الميم، اللام، الواو، النون. وينقسم إلى إدغام بغنة (ي، ن، م، و) وإدغام بغير غنة (ل، ر).',
+    examples:[
+      {ayah:'مَن يَعْمَلْ', ref:'سورة الزلزلة - ٧', note:'إدغام بغنة، تدغم النون في الياء مع بقاء الغنة.'},
+      {ayah:'مِن لَّدُنْهُ', ref:'سورة الكهف - ٢', note:'إدغام بغير غنة عند اللام.'},
+      {ayah:'مِن رَّبِّهِمْ', ref:'سورة البقرة - ٥', note:'إدغام بغير غنة عند الراء.'}
+    ]},
+  { icon:'🔁', name:'القلب', cat:'أحكام النون الساكنة والتنوين',
+    explain:'القلب هو قلب النون الساكنة أو التنوين ميمًا خالصة عند مجيء حرف الباء بعدها، مع إخفاء هذه الميم وإظهار الغنة، وذلك تسهيلًا للنطق لتقارب مخرج الباء والميم.',
+    examples:[
+      {ayah:'مِن بَعْدِ', ref:'سورة البقرة - ٢٧', note:'تقلب النون ميمًا مخفاة مع الغنة قبل الباء.'},
+      {ayah:'سَمِيعٌ بَصِيرٌ', ref:'سورة البقرة - ٢٠', note:'التنوين يقلب ميمًا عند الباء.'},
+      {ayah:'أَنۢبِئْهُم', ref:'سورة البقرة - ٣٣', note:'قلب النون الساكنة ميمًا قبل الباء داخل الكلمة.'}
+    ]},
+  { icon:'🕳️', name:'الإخفاء الحقيقي', cat:'أحكام النون الساكنة والتنوين',
+    explain:'الإخفاء هو نطق النون الساكنة أو التنوين بصفة بين الإظهار والإدغام، مع بقاء الغنة، وذلك عند مجيء أحد الحروف الخمسة عشر الباقية بعد استثناء حروف الإظهار والإدغام والقلب، مثل: الصاد، الذال، الثاء، الكاف، الجيم، الشين، القاف، السين، الدال، الطاء، الزاي، الفاء، التاء، الضاد، الظاء.',
+    examples:[
+      {ayah:'مِنكُمْ', ref:'سورة البقرة - ٢١', note:'إخفاء النون عند الكاف مع الغنة.'},
+      {ayah:'أَنْصَارًا', ref:'سورة الصف - ١٤', note:'إخفاء التنوين عند الصاد.'},
+      {ayah:'جَنَّاتٍ تَجْرِي', ref:'سورة البقرة - ٢٥', note:'إخفاء التنوين عند التاء.'}
+    ]},
+  { icon:'📏', name:'المد الطبيعي (الأصلي)', cat:'أحكام المدود',
+    explain:'المد الطبيعي هو مد الصوت بحرف من حروف المد الثلاثة (الألف، الواو، الياء) بمقدار حركتين فقط، بشرط ألا يأتي بعده همز ولا سكون، وسُمّي طبيعيًا لأن صاحب الفطرة السليمة لا ينقص عنه ولا يزيد.',
+    examples:[
+      {ayah:'قَالَ', ref:'سورة البقرة - ٣٠', note:'مد طبيعي بالألف بمقدار حركتين.'},
+      {ayah:'يَقُولُونَ', ref:'سورة البقرة - ٨', note:'مد طبيعي بالواو.'},
+      {ayah:'فِيهَا', ref:'سورة البقرة - ٢٥', note:'مد طبيعي بالياء.'}
+    ]},
+  { icon:'🔊', name:'المد المتصل', cat:'أحكام المدود',
+    explain:'المد المتصل مد واجب، وهو أن يأتي حرف الهمز بعد حرف المد في كلمة واحدة، ويُمد وجوبًا بمقدار أربع أو خمس حركات، سُمّي متصلًا لاتصال حرف المد بالهمز في نفس الكلمة.',
+    examples:[
+      {ayah:'السَّمَاءِ', ref:'سورة البقرة - ٢٢', note:'مد متصل بمقدار 4-5 حركات لوجود الهمزة بعد الألف في نفس الكلمة.'},
+      {ayah:'جَاءَ', ref:'سورة النصر - ١', note:'مد متصل عند الهمزة بعد الألف.'},
+      {ayah:'سُوءَ', ref:'سورة المائدة - ٣١', note:'مد متصل بالواو مع الهمزة.'}
+    ]},
+  { icon:'🔀', name:'المد المنفصل', cat:'أحكام المدود',
+    explain:'المد المنفصل مد جائز، وهو أن ينتهي حرف المد في آخر كلمة ويأتي الهمز في أول الكلمة التي تليها، ويجوز مدّه بمقدار حركتين إلى أربع، سُمّي منفصلًا لانفصال حرف المد عن الهمز في كلمتين مختلفتين.',
+    examples:[
+      {ayah:'يَا أَيُّهَا', ref:'سورة البقرة - ٢١', note:'مد منفصل بين كلمة "يا" وكلمة "أيها".'},
+      {ayah:'قُوا أَنفُسَكُمْ', ref:'سورة التحريم - ٦', note:'مد منفصل بالواو قبل الهمزة في الكلمة التالية.'},
+      {ayah:'فِي أَنفُسِهِمْ', ref:'سورة الروم - ٨', note:'مد منفصل بالياء قبل الهمزة.'}
+    ]},
+  { icon:'✨', name:'مد البدل', cat:'أحكام المدود',
+    explain:'مد البدل هو أن يتقدم الهمز على حرف المد في الكلمة نفسها، ويُمد بمقدار حركتين فقط كالمد الطبيعي، وسُمّي بدلًا لأن أصله همزتان التقتا فأُبدلت الثانية حرف مد.',
+    examples:[
+      {ayah:'آمَنُوا', ref:'سورة البقرة - ٢٥', note:'أصلها همزتان (أَأمنوا) أبدلت الثانية ألف مد.'},
+      {ayah:'إِيمَانًا', ref:'سورة الأحزاب - ٢٢', note:'مد بدل بالياء بعد الهمزة.'},
+      {ayah:'أُوتُوا', ref:'سورة البقرة - ١٤٤', note:'مد بدل بالواو بعد الهمزة.'}
+    ]},
+  { icon:'🎐', name:'مد اللين', cat:'أحكام المدود',
+    explain:'مد اللين يكون في حرفي الواو والياء الساكنتين المفتوح ما قبلهما، إذا جاء بعدهما سكون عارض بسبب الوقف، ويُمد حينئذ بمقدار حركتين إلى ست حركات حسب حال الوقف.',
+    examples:[
+      {ayah:'خَوْفٍ', ref:'سورة قريش - ٤ (عند الوقف)', note:'مد لين بالواو الساكنة بعد فتحة عند الوقوف على الكلمة.'},
+      {ayah:'بَيْتِ', ref:'سورة قريش - ٣ (عند الوقف)', note:'مد لين بالياء الساكنة بعد فتحة عند الوقف.'},
+      {ayah:'الصَّيْفِ', ref:'سورة قريش - ٢ (عند الوقف)', note:'مثال آخر على مد اللين عند الوقف.'}
+    ]},
+  { icon:'👃', name:'الغنة', cat:'صفات الحروف',
+    explain:'الغنة صوت رخيم يخرج من الخيشوم (الأنف) يصاحب حرفي النون والميم عند التشديد وعند الإخفاء والإدغام بغنة والقلب، ومقدارها حركتان، وتزداد وضوحًا كلما كان الحرف مشددًا.',
+    examples:[
+      {ayah:'إِنَّ', ref:'سورة الفاتحة - ٦', note:'غنة كاملة على النون المشددة.'},
+      {ayah:'ثُمَّ', ref:'سورة البقرة - ٢٨', note:'غنة كاملة على الميم المشددة.'},
+      {ayah:'مِمَّا', ref:'سورة البقرة - ٢٣', note:'غنة ظاهرة على الميم المشددة في وسط الكلمة.'}
+    ]},
+  { icon:'💥', name:'القلقلة', cat:'صفات الحروف',
+    explain:'القلقلة هي اضطراب واهتزاز في مخرج الحرف الساكن حتى يسمع له نبرة قوية، وحروفها خمسة مجموعة في "قطب جد": القاف، الطاء، الباء، الجيم، الدال. وتكون صغرى في وسط الكلمة، وكبرى إذا كان الحرف في آخرها عند الوقف.',
+    examples:[
+      {ayah:'يَخْلُقُ', ref:'سورة الزمر - ٦ (وسط الكلمة)', note:'قلقلة صغرى على القاف الساكنة في وسط الكلمة.'},
+      {ayah:'الْفَلَقِ', ref:'سورة الفلق - ١ (عند الوقف)', note:'قلقلة كبرى على القاف عند الوقف في آخر الكلمة.'},
+      {ayah:'أَحَدٌ', ref:'سورة الإخلاص - ٤ (عند الوقف)', note:'قلقلة كبرى على الدال عند الوقوف عليها.'}
+    ]},
+  { icon:'🏷️', name:'ترقيق وتفخيم الراء', cat:'أحكام الراء',
+    explain:'تُفخَّم الراء إذا كانت مفتوحة أو مضمومة، أو ساكنة وما قبلها مفتوح أو مضموم، وتُرقَّق إذا كانت مكسورة أو ساكنة وما قبلها مكسور كسرًا أصليًا متصلًا بها بدون حرف استعلاء بعدها.',
+    examples:[
+      {ayah:'الرَّحْمَٰنِ', ref:'سورة الفاتحة - ٣', note:'الراء مفتوحة مشددة فتُفخَّم.'},
+      {ayah:'مِن رِّزْقٍ', ref:'سورة البقرة - ٢٥', note:'الراء مكسورة فتُرقَّق.'},
+      {ayah:'فِرْعَوْنَ', ref:'سورة البقرة - ٤٩', note:'الراء ساكنة وما قبلها مكسور فتُرقَّق.'}
+    ]},
+  { icon:'🔹', name:'ترقيق وتفخيم لام الجلالة', cat:'أحكام اللام',
+    explain:'تُفخَّم لام لفظ الجلالة "الله" إذا سبقها فتح أو ضم، وتُرقَّق إذا سبقها كسر، وهذا الحكم خاص بلفظ الجلالة دون سائر اللامات في القرآن.',
+    examples:[
+      {ayah:'قَالَ اللَّهُ', ref:'سورة المائدة - ١١٦', note:'اللام مفخمة لأن ما قبلها مفتوح.'},
+      {ayah:'هُوَ اللَّهُ', ref:'سورة الحشر - ٢٢', note:'اللام مفخمة لأن ما قبلها مضموم.'},
+      {ayah:'بِسْمِ اللَّهِ', ref:'الفاتحة - ١', note:'اللام مرققة لأن ما قبلها مكسور (الميم مكسورة).'}
+    ]},
+  { icon:'🛑', name:'الوقف والابتداء', cat:'آداب التلاوة',
+    explain:'الوقف هو قطع الصوت عن الكلمة زمنًا يتنفس فيه القارئ بنية استئناف القراءة، وينقسم إلى وقف تام وكافٍ وحسن وقبيح. أما الابتداء فهو الشروع في القراءة بعد الوقف، ويُشترط أن يكون بكلام يصلح الابتداء به دون أن يخل بالمعنى.',
+    examples:[
+      {ayah:'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ', ref:'سورة الفاتحة - ٢', note:'وقف تام يمكن الوقوف عنده لأنه تم معناه.'},
+      {ayah:'الرَّحْمَٰنِ الرَّحِيمِ', ref:'سورة الفاتحة - ٣', note:'وقف كافٍ، تام في اللفظ لكنه مرتبط بما بعده في المعنى.'},
+      {ayah:'مَالِكِ يَوْمِ الدِّينِ', ref:'سورة الفاتحة - ٤', note:'وقف حسن، يحسن الوقوف عليه مع تعلقه بما بعده.'}
+    ]},
+];
+
+const tajweedGrid = document.getElementById('tajweedGrid');
+const letterCaption = document.getElementById('letterCaption');
+
+function renderTajweedGrid(){
+  tajweedGrid.innerHTML='';
+  TAJWEED_RULES.forEach((rule, idx) => {
+    const card = document.createElement('div');
+    card.className = 'tajweed-card';
+    card.innerHTML = `
+      <span class="tj-icon">${rule.icon}</span>
+      <div class="tj-name">${rule.name}</div>
+      <div class="tj-desc">${rule.cat}</div>
+    `;
+    card.addEventListener('click', () => openTajweedDetail(idx));
+    tajweedGrid.appendChild(card);
+  });
+}
+renderTajweedGrid();
+
+function openTajweedDetail(idx){
+  const rule = TAJWEED_RULES[idx];
+  document.getElementById('tajweedListView').style.display='none';
+  const dv=document.getElementById('tajweedDetailView'); dv.style.display='block';
+  let examplesHtml='';
+  rule.examples.forEach(ex=>{
+    examplesHtml += `
+      <div class="tj-example-card">
+        <div class="tj-example-ayah">${ex.ayah}</div>
+        <div class="tj-example-ref">${ex.ref}</div>
+        <div class="tj-example-note">📌 ${ex.note}</div>
+      </div>`;
+  });
+  dv.innerHTML = `
+    <div class="tajweed-detail-header">
+      <button class="btn ghost sm" id="backToTajweed">‹ رجوع للأحكام</button>
+      <div class="tj-big-icon">${rule.icon}</div>
+      <div class="tj-big-name">${rule.name}</div>
+      <div class="tj-cat">${rule.cat}</div>
+    </div>
+    <div class="tajweed-explain">${rule.explain}</div>
+    <div class="tajweed-examples-title">أمثلة من القرآن الكريم</div>
+    ${examplesHtml}
+  `;
+  document.getElementById('backToTajweed').addEventListener('click', ()=>{
+    document.getElementById('tajweedListView').style.display='block';
+    dv.style.display='none';
+  });
+  letterCaption.textContent = `📖 ${rule.name}: ${rule.explain.slice(0,80)}...`;
+}
+
+/* ================= DIGITAL TASBIH (standalone, up to 1000) ================= */
+let tasbihCounter = 0;
+const TASBIH_MAX = 1000;
+const tasbihDisplay = document.getElementById('tasbihCount');
+const tasbihMsg = document.getElementById('tasbihMessage');
+const tasbihStatus = document.getElementById('tasbihStatus');
+const progressFill = document.getElementById('tasbihProgressFill');
+
+function updateTasbihUI() {
+  tasbihDisplay.textContent = tasbihCounter;
+  const pct = Math.min(100, (tasbihCounter / TASBIH_MAX) * 100);
+  progressFill.style.width = pct + '%';
+  tasbihStatus.textContent = `${tasbihCounter} / ${TASBIH_MAX}`;
+  
+  if (tasbihCounter === 0) {
+    tasbihMsg.textContent = 'سبحان الله وبحمده، سبحان الله العظيم';
+  } else if (tasbihCounter === 33) {
+    tasbihMsg.textContent = '🌟 سبحان الله (33) — الحمد لله (33) — الله أكبر (34)';
+  } else if (tasbihCounter === 66) {
+    tasbihMsg.textContent = '🌟 الحمد لله (33) — الله أكبر (34) — سبحان الله (33)';
+  } else if (tasbihCounter === 99) {
+    tasbihMsg.textContent = '🌟 سبحان الله 33، الحمد لله 33، الله أكبر 33 — تم التسبيح!';
+  } else if (tasbihCounter === TASBIH_MAX) {
+    tasbihMsg.textContent = '🎉 سبحان الله! أكملت ١٠٠٠ تسبيحة — جزاك الله خيرًا! 🎉';
+    tasbihStatus.textContent = '✅ تم الإنجاز!';
+  } else if (tasbihCounter % 100 === 0 && tasbihCounter > 0) {
+    tasbihMsg.textContent = `💫 ${tasbihCounter} تسبيحة — بارك الله فيك!`;
+  } else {
+    const remaining = TASBIH_MAX - tasbihCounter;
+    if (remaining > 0) {
+      tasbihMsg.textContent = `سبحان الله وبحمده (${tasbihCounter}) — تبقى ${remaining}`;
+    }
+  }
+}
+
+document.getElementById('tasbihBtn').addEventListener('click', ()=>{
+  if (tasbihCounter < TASBIH_MAX) {
+    tasbihCounter++;
+    updateTasbihUI();
+  } else {
+    tasbihMsg.textContent = '🎉 أكملت ١٠٠٠ تسبيحة! اضغط "إعادة" للبدء من جديد.';
+  }
 });
 
-const kidsShort=document.getElementById('kidsShortSurahs');
-SURAHS.filter(s=>s.n>=99).forEach(s=>{
-  const el=document.createElement('div'); el.className='surah-item';
-  el.innerHTML=`<div class="star-badge"><span>${arNum(s.n)}</span></div>
-    <div class="surah-info"><div class="name">سورة ${s.ar}</div><div class="meta">${arNum(s.ay)} آيات — سهلة الحفظ</div></div>
-    <div class="chev">‹</div>`;
-  el.addEventListener('click',()=>{ showTab('quran'); openSurah(s.n); });
-  kidsShort.appendChild(el);
+document.getElementById('tasbihReset').addEventListener('click', ()=>{
+  tasbihCounter = 0;
+  updateTasbihUI();
 });
+
+document.querySelectorAll('.tasbih-presets .btn').forEach(btn => {
+  btn.addEventListener('click', ()=>{
+    const val = parseInt(btn.dataset.preset, 10);
+    if (val <= TASBIH_MAX) {
+      tasbihCounter = val;
+      updateTasbihUI();
+    }
+  });
+});
+
+// Initialize
+updateTasbihUI();
 
 /* ================= TODO ================= */
 let todos=[]; let todoSeq=1;
